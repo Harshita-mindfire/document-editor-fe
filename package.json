@@ -23,7 +23,9 @@
     "build:start": "cd dist && PORT=3000 npx serve",
     "start": "webpack serve --open --mode development",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "husky-install": "husky install",
+    "lint-staged": "lint-staged"
   },
   "eslintConfig": {
     "extends": [
