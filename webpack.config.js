@@ -36,7 +36,8 @@ module.exports = {
       },
       {
         test: /\.(ts|tsx|js)$/,
-        exclude: /node_modules/,
+        exclude:
+          /node_modules(?!\/quill-image-drop-module|quill-image-resize-module)/,
         loader: "babel-loader",
         options: {
           presets: ["@babel/preset-react", "@babel/preset-typescript"],

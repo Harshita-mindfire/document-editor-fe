@@ -1,16 +1,9 @@
-import React, { useState } from "react";
-import ReactQuill from "react-quill";
+import React from "react";
 import "react-quill/dist/quill.snow.css";
+import Editor from "./components/Editor/Editor";
 
 function App() {
-  const [editorValue, setEditorValue] = useState("");
-  return (
-    <ReactQuill
-      theme="snow"
-      value={editorValue}
-      onChange={(e) => setEditorValue(e)}
-    />
-  );
+  return <Editor />;
 }
 
 export default App;
