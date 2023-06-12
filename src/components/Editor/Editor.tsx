@@ -7,7 +7,9 @@ import {
   FormattingOption,
   List,
   Script,
+  fontSizeArr,
 } from "../../utils/constant";
+import "./Editor.scss";
 
 const toolbarOptions = [
   Object.values(FormattingOption),
@@ -16,6 +18,7 @@ const toolbarOptions = [
   [{ list: List.ORDERED }, { list: List.BULLET }],
   [{ indent: "-1" }, { indent: "+1" }],
   [{ header: [1, 2, 3, false] }],
+  [{ size: fontSizeArr }],
   [{ font: [] }],
   [{ color: [] }],
   Object.values(Attachment),
@@ -23,6 +26,9 @@ const toolbarOptions = [
 ];
 
 Quill.register("modules/imageResize", ImageResize);
+const Size = Quill.import("attributors/style/size");
+Size.whitelist = fontSizeArr;
+Quill.register(Size, true);
 
 function Editor() {
   const [editorValue, setEditorValue] = useState("");
