@@ -10,6 +10,7 @@ import {
   fontSizeArr,
 } from "../../utils/constant";
 import "./Editor.scss";
+import { CustomHr } from "../../utils/customHr";
 
 const toolbarOptions = [
   Object.values(FormattingOption),
@@ -21,14 +22,17 @@ const toolbarOptions = [
   [{ size: fontSizeArr }],
   [{ font: [] }],
   [{ color: [] }],
+  [{ "custom-hr": "hr" }],
   Object.values(Attachment),
   ["clean"],
 ];
 
-Quill.register("modules/imageResize", ImageResize);
 const Size = Quill.import("attributors/style/size");
 Size.whitelist = fontSizeArr;
+
+Quill.register("modules/imageResize", ImageResize);
 Quill.register(Size, true);
+Quill.register(CustomHr, true);
 
 function Editor() {
   const [editorValue, setEditorValue] = useState("");
@@ -42,7 +46,9 @@ function Editor() {
       }}
       placeholder="Type something..."
       modules={{
-        toolbar: toolbarOptions,
+        toolbar: {
+          container: toolbarOptions,
+        },
         imageResize: {
           modules: ["Resize", "DisplaySize"],
         },
